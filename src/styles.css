@@ -1,0 +1,109 @@
+/* 全局与背景 */
+html,body,#app{height:100%;margin:0;font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#00122b;color:#cfeeff}
+body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px);}
+
+/* 顶部大横幅 */
+.top-banner{display:none;}
+.banner-inner{max-width:1200px;margin:0 auto}
+.banner-title{color:#fff;font-weight:800;font-size:28px}
+.banner-sub{color:rgba(200,240,255,0.8);margin-top:4px}
+
+/* 仪表盘容器 */
+.board-wrap{padding:26px 40px 40px}
+.board{max-width:1200px;margin:0 auto;border-radius:12px;padding:18px;background:linear-gradient(180deg,#02122a,#04183a);box-shadow:0 8px 30px rgba(0,0,0,0.6);border:1px solid rgba(10,150,255,0.06);position:relative;overflow:hidden}
+/* removed stacked thin gradient to avoid visual clutter */
+.board:before{display:none}
+
+/* top-decor removed temporarily to reduce clutter */
+.top-decor{display:none !important}
+
+/* hide short decorative bars to avoid extra overlap */
+.board .mini-bars{display:none}
+
+/* temporarily remove title-wrap background image to avoid overlapping visuals */
+.title-wrap{background-image:none;background-color:transparent}
+.title-wrap:after{background:none}
+
+/* 发光边框层 */
+.board::after{content:"";position:absolute;inset:-8px;border-radius:16px;pointer-events:none;box-shadow:0 0 40px rgba(0,220,255,0.12);filter:blur(6px);opacity:0.95}
+
+/* 角落装饰（简化的发光几何） */
+.corner{position:absolute;width:36px;height:26px;pointer-events:none;opacity:0.95}
+.corner:before,.corner:after{content:"";position:absolute;background:linear-gradient(90deg,#06d4ff,rgba(6,212,255,0));}
+.corner:after{background:linear-gradient(180deg,#06d4ff,rgba(6,212,255,0));}
+.corner-tl{left:6px;top:6px}
+.corner-tl:before{left:0;top:0;width:22px;height:2px;border-top-left-radius:2px}
+.corner-tl:after{left:0;top:0;width:2px;height:22px;border-top-left-radius:2px}
+
+.corner-tr{right:6px;top:6px;transform:scaleX(-1)}
+.corner-bl{left:6px;bottom:6px;transform:scaleY(-1)}
+.corner-br{right:6px;bottom:6px;transform:scaleX(-1) scaleY(-1)}
+
+/* 角落微动画 */
+@keyframes cornerPulse{0%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}100%{opacity:.6;transform:scale(1)}}
+.corner{animation:cornerPulse 2.5s ease-in-out infinite}
+
+/* 小发光条（右上短条） */
+.board .mini-bars{position:absolute;right:18px;top:12px;display:flex;gap:6px}
+.board .mini-bars span{width:24px;height:4px;background:linear-gradient(90deg,#06d4ff,#00ffd6);border-radius:2px;box-shadow:0 0 10px rgba(6,212,255,0.35)}
+.board-top{display:flex;justify-content:center;padding:8px 0}
+.chips{display:flex;gap:12px}
+.chip{background:rgba(8,110,170,0.18);border-radius:14px;padding:6px 12px;color:#bfeeff;font-weight:700;border:1px solid rgba(0,200,255,0.12)}
+
+/* 三列布局 */
+.board-body{display:flex;gap:18px;margin-top:12px}
+
+/* 标题素材包裹层 */
+.title-wrap{max-width:1000px;margin:6px auto 18px;display:flex;align-items:center;justify-content:center;height:72px;background-image:url('/assets/img/sd_header.3c151b5a.png');background-size:contain;background-repeat:no-repeat;background-position:center;position:relative;z-index:2}
+.title-wrap .title{color:#e9ffff;font-weight:900;letter-spacing:1px;font-size:22px;text-shadow:0 2px 10px rgba(0,0,0,0.6);padding:10px 18px;border-radius:4px}
+
+.col{flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(8,30,60,0.12),rgba(8,30,60,0.05));border:1px solid rgba(0,140,210,0.06);border-radius:8px;overflow:hidden}
+.col-header{background:linear-gradient(90deg,#063a61,#095b8e);padding:10px 12px;color:#e7fbff;font-weight:700;text-align:center;border-bottom:1px solid rgba(0,140,210,0.12)}
+.col-inner{flex:1;display:flex;align-items:center;justify-content:center;padding:18px}
+ .col-inner .inner-box{width:100%;height:560px;max-width:540px;background:linear-gradient(180deg,#031731,#05213a);border-radius:6px;border:1px solid rgba(0,200,255,0.12);box-shadow:inset 0 0 0 1px rgba(3,55,84,0.7);position:relative;padding:12px;display:flex;flex-direction:column}
+.col-inner .inner-box .inner-title{font-size:13px;color:#9fefff;font-weight:700;margin-bottom:12px}
+.col-inner .inner-box .inner-diagram{flex:1;display:flex;align-items:center;justify-content:center}
+.col-inner .inner-box .inner-diagram img{width:100%;height:100%;object-fit:contain;border-radius:4px}
+.col-inner .inner-box .panel-placeholder{width:100%;height:100%;border-radius:4px;background:linear-gradient(180deg,#072233,#05233a);box-shadow:inset 0 0 30px rgba(0,0,0,0.35);border:1px dashed rgba(0,140,210,0.06)}
+.col-illustration{display:none}
+.col-footer{background:rgba(0,0,0,0.04);padding:8px;border-top:1px solid rgba(0,140,210,0.04)}
+
+/* ensure consistent flex behavior across browsers */
+.col{flex:1 1 0;min-width:260px}
+
+/* hide Vue template until mounted */
+[v-cloak]{display:none}
+
+/* tighten hl-box bottom offsets for taller boxes */
+.board .hl-boxes{position:absolute;inset:48px 20px 40px 20px;pointer-events:none;z-index:3}
+.board .hl-box.left{left:20px;top:72px;bottom:40px;width:calc(33.333% - 12px)}
+.board .hl-box.center{left:calc(33.333% + 6px);top:72px;bottom:40px;width:calc(33.333% - 12px)}
+.board .hl-box.right{left:calc(66.666% + 26px);top:72px;bottom:40px;width:calc(33.333% - 12px)}
+.mini-table{width:100%;color:#9ee9ff;border-collapse:collapse}
+.mini-table td{padding:6px 8px;border:1px solid rgba(0,140,210,0.04);font-size:12px}
+
+.board-bottom{height:120px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45)}
+
+/* 高亮荧光框（左/中/右/底） */
+.board .hl-boxes{position:absolute;inset:48px 20px 60px 20px;pointer-events:none;z-index:3}
+.board .hl-box{position:absolute;border:2px solid rgba(6,212,255,0.9);border-radius:10px;box-shadow:0 0 40px rgba(6,212,255,0.14), inset 0 0 12px rgba(6,212,255,0.06);transition:transform .25s ease,box-shadow .25s ease;opacity:0.95}
+.board .hl-box.left{left:20px;top:72px;bottom:60px;width:calc(33.333% - 12px)}
+.board .hl-box.center{left:calc(33.333% + 6px);top:72px;bottom:60px;width:calc(33.333% - 12px)}
+.board .hl-box.right{left:calc(66.666% + 26px);top:72px;bottom:60px;width:calc(33.333% - 12px)}
+.board .hl-box.bottom{left:20px;right:20px;height:84px;bottom:12px;top:auto}
+@keyframes hlGlow{0%{box-shadow:0 0 20px rgba(6,212,255,0.06), inset 0 0 8px rgba(6,212,255,0.03)}50%{box-shadow:0 0 30px rgba(6,212,255,0.12), inset 0 0 12px rgba(6,212,255,0.05)}100%{box-shadow:0 0 20px rgba(6,212,255,0.06), inset 0 0 8px rgba(6,212,255,0.03)}}
+.board .hl-box{animation:hlGlow 3.5s ease-in-out infinite}
+
+/* 粒度与响应 */
+@media(max-width:1100px){.board-body{flex-direction:column}.col-inner{padding:18px}.col-illustration{height:240px}}
+
+/* Dialog 中图表颜色 */
+#chart{background:linear-gradient(180deg,#021f38,#02112b);}
+
+/* 小交互 */
+.el-button{border-radius:3px}
+.dialog-footer .el-button{background:transparent}
+
+/* 视觉装饰角落（简化版） */
+.board:after{content:"";position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-right:2px solid rgba(0,200,255,0.08);border-bottom:2px solid rgba(0,200,255,0.08);border-radius:4px}
+.board:before{border-radius:6px}

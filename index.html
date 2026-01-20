@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>6G 综合试验平台 - 静态复现</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="top-banner">
+      <div class="banner-inner">
+        <!-- banner text removed per request -->
+        <div class="banner-title"></div>
+        <div class="banner-sub"></div>
+      </div>
+    </div>
+
+    <div class="board-wrap">
+
+        <!-- 中心标题（由素材包裹） -->
+        <div class="title-wrap" aria-hidden="true">
+          <div class="title">6G 综合试验平台</div>
+        </div>
+
+        <div class="board-body">
+
+          <!-- Left column (独立，可单独定制) -->
+          <div class="col col-left">
+            <div class="col-header">{{ headers[0] }}</div>
+            <div class="col-inner">
+              <div class="inner-box">
+                <div class="inner-title">保障无线网络接入过程可信公开透明</div>
+                <div class="inner-diagram">
+                  <div class="panel-placeholder panel-0" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-footer"></div>
+          </div>
+
+          <!-- Center column (独立，可单独定制) -->
+          <div class="col col-center">
+            <div class="col-header">{{ headers[1] }}</div>
+            <div class="col-inner">
+              <div class="inner-box">
+                <div class="inner-title">保障数据流转全流程安全可信</div>
+                <div class="inner-diagram">
+                  <div class="panel-placeholder panel-1" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-footer"></div>
+          </div>
+
+          <!-- Right column (独立，可单独定制) -->
+          <div class="col col-right">
+            <div class="col-header">{{ headers[2] }}</div>
+            <div class="col-inner">
+              <div class="inner-box">
+                <div class="inner-title">保障位置隐私数据可查可用不可见</div>
+                <div class="inner-diagram">
+                  <div class="panel-placeholder panel-2" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-footer"></div>
+          </div>
+
+        </div>
+
+        <div class="board-bottom"></div>
+      </div>
+    </div>
+
+    <el-dialog :visible.sync="dialogVisible" width="70%" :title="dialogTitle">
+      <div v-if="chartShown">
+        <div id="chart" style="height:420px;"></div>
+      </div>
+      <div v-else>
+        <p>占位详情内容。你可以把这里替换为更复杂的组件或路由页面。</p>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible=false">关闭</el-button>
+      </span>
+    </el-dialog>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="/src/app.js"></script>
+</body>
+</html>
