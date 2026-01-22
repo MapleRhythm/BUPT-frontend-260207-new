@@ -125,33 +125,3 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   /* flex: 1 is already set in styles.css */
   overflow: hidden;
 }
-
-/* 调整 p2.gif 的样式，确保边框与图片上下沿贴合 */
-.col-center .inner-diagram img {
-  margin: 0; /* 移除外边距 */
-  border: 1.8px dashed rgb(0,133,196); /* 添加蓝色虚线边框 */
-  padding: 0; /* 确保边框与图片贴合 */
-
-}
-
-/* 调整边框所在容器的上下 padding */
-.col-center .inner-diagram {
-  margin-top: 6px; /* 将图片上移，减少上方外边距 */
-  margin-bottom: 143px; /* 增加下方外边距 */
-}
-
-.additional-block {
-  margin-top: 40px; /* 增加上边距 */
-}
-
-.col-left .inner-diagram img {
-  margin: 0; /* 移除外边距 */
-  border: 1.8px dashed rgb(0,133,196); /* 添加蓝色虚线边框 */
-  padding: 0; /* 确保边框与图片贴合 */
-}
-
-/* 调整边框所在容器的上下 padding */
-.col-left .inner-diagram {
-  margin-top: 6px; /* 将图片上移，减少上方外边距 */
-  margin-bottom: 190px; /* 增加下方外边距 */
-}
