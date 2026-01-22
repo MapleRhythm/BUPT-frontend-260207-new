@@ -107,21 +107,3 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 /* 视觉装饰角落（简化版） */
 .board:after{content:"";position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-right:2px solid rgba(0,200,255,0.08);border-bottom:2px solid rgba(0,200,255,0.08);border-radius:4px}
 .board:before{border-radius:6px}
-
-/* Right column specific layout adjustments */
-.col-right .col-inner {
-  align-items: stretch; /* Ensure inner-box fills height */
-}
-.col-right .inner-box {
-  height: auto; /* Override fixed height */
-  flex: 1;      /* Fill remaining space */
-  padding: 10px; /* 10px padding from border */
-}
-.col-right .inner-title {
-  margin-bottom: 15px; /* 15px vertical gap */
-  flex-shrink: 0;
-}
-.col-right .inner-diagram {
-  /* flex: 1 is already set in styles.css */
-  overflow: hidden;
-}
