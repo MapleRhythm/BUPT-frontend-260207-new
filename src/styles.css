@@ -82,7 +82,15 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .mini-table{width:100%;color:#9ee9ff;border-collapse:collapse}
 .mini-table td{padding:6px 8px;border:1px solid rgba(0,140,210,0.04);font-size:12px}
 
-.board-bottom{height:120px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45)}
+.board-bottom{height:120px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45);padding:10px}
+.bottom-content{display:flex;align-items:center;gap:10px;height:100%}
+.chart-container{display:flex;gap:10px;height:100%;flex:1}
+.chart-wrapper{flex:1;display:flex;flex-direction:column;gap:5px}
+.chart-meta{display:flex;justify-content:flex-start;align-items:baseline;padding-left:8px}
+.chart-meta h3{margin:0;font-size:14px;font-weight:700;color:#C4CAF3;letter-spacing:0.2px;font-family:"Microsoft YaHei",sans-serif}
+.chart-item{flex:1;height:100%;border-radius:10px;background:rgba(17, 190, 245, 0.11);overflow:hidden;position:relative}
+.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto}
+.status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:right;white-space:normal;flex:0 0 auto;z-index:10}
 
 /* 高亮荧光框（左/中/右/底） */
 .board .hl-boxes{position:absolute;inset:48px 20px 60px 20px;pointer-events:none;z-index:3}

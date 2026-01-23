@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>小屏展示 + TPS Chart</title>
+
+  <!-- ECharts CDN（如果你机器不能访问外网，见文末“离线方案”） -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: system-ui, -apple-system;
+    }
+
+    /* 16:9 小屏 */
+    .screen {
+      width: 960px;
+      height: 540px;
+      background: #0b1c2d;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    /* 上半：静态背景图 */
+    .visual {
+      position: relative;
+      flex: 0 0 58%;
+      background: url("./bg.jpg") no-repeat center;
+      background-size: contain; /* 不裁剪、不拉伸 */
+    }
+
+    /* SVG 覆盖层（箭头动画） */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .overlay path {
+      stroke-dasharray: 6 4;
+      animation: flow 2.5s linear infinite;
+    }
+
+    @keyframes flow {
+      from { stroke-dashoffset: 0; }
+      to   { stroke-dashoffset: -20; }
+    }
+
+    /* 下半：内容区 + 图表 */
+    .content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+      padding: 12px 14px;
+      color: #cde6ff;
+      box-sizing: border-box;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .meta h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .meta .hint {
+      opacity: 0.8;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    /* 图表容器 */
+    #tpsChart {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background: rgba(17, 190, 245, 0.11); /* 贴近你原大屏那层淡青底 */
+      overflow: hidden;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="screen">
+    <!-- 上半：背景图 + 箭头动画（不想要动画就删掉 svg 这块） -->
+    <div class="visual">
+      <svg class="overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <!-- 示例箭头：你可以改 d 的坐标来换位置/方向 -->
+        <path
+          d="M12 68 L88 45"
+          fill="none"
+          stroke="#00f6ff"
+          stroke-width="1.2"
+        />
+      </svg>
+    </div>
+
+    <!-- 下半：标题 + ECharts -->
+    <div class="content">
+      <div class="meta">
+        <h3>TPS 趋势</h3>
+        <div class="hint">（示例数据：不联动后端）</div>
+      </div>
+
+      <div id="tpsChart"></div>
+    </div>
+  </div>
+
+  <script>
+    // 初始化 ECharts
+    const chartEl = document.getElementById('tpsChart');
+    const chart = echarts.init(chartEl);
+
+    // 假数据（你后面接后端就替换这里的数组）
+    const xData = ["14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35"];
+    const yData = [8450, 8520, 8480, 8600, 8550, 8620, 8700, 8650, 8720, 8800, 8750, 8820];
+
+    const option = {
+      grid: { top: "25%", bottom: "15%", right: "5%", left: "8%" },
+      tooltip: { trigger: "axis" },
+      xAxis: {
+        type: "category",
+        boundaryGap: false,
+        data: xData,
+        axisLabel: { color: "#C4CAF3", fontSize: 12 },
+        axisLine: { show: true, lineStyle: { color: "rgba(1, 202, 251, 0.4)", width: 1 } }
+      },
+      yAxis: {
+        type: "value",
+        min: 8000,
+        max: 9000,
+        name: "TPS",
+        nameTextStyle: { color: "#00FFF6", fontSize: 12 },
+        axisLabel: { color: "#C4CAF3", fontSize: 12 },
+        axisLine: { show: true, lineStyle: { color: "rgba(1, 202, 251, 0.4)" } },
+        splitLine: {
+          show: true,
+          lineStyle: { type: "dashed", color: "rgba(1, 202, 251, 0.4)" }
+        }
+      },
+      series: [{
+        name: "TPS",
+        type: "line",
+        smooth: true,
+        showSymbol: false,
+        clip: true,
+        lineStyle: { width: 2, color: "#3ae6d5" },
+        data: yData
+      }]
+    };
+
+    chart.setOption(option);
+
+    // 处理窗口变化（避免小屏容器尺寸变化时图表不刷新）
+    window.addEventListener('resize', () => chart.resize());
+  </script>
+</body>
+</html>
