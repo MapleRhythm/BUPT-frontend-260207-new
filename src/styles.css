@@ -133,3 +133,15 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   /* flex: 1 is already set in styles.css */
   overflow: hidden;
 }
+
+/* 悬浮文本的外层容器（仅负责定位） */
+.inner-diagram .diagram-text {
+  position: absolute;top: 28%;left: 2%;z-index: 99;
+}
+
+.inner-diagram .text-content {
+  color: #26ffbc; /* 文本颜色 */font-size: 10px;font-weight: 700;text-align: center;padding: 6px 20px;border-radius: 8px;
+}
+.inner-diagram .text-content2 {
+  color: #fe963d; /* 文本颜色 */font-size: 10px;font-weight: 700;text-align: center;padding: 6px 20px;border-radius: 8px;
+}
