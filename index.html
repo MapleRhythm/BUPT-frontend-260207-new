@@ -87,8 +87,35 @@
 
         <div class="board-bottom">
           <div class="bottom-content">
-            <div class="system-status-box">系统运行<br>状态</div>
             <div class="chart-container">
+              <div class="system-status-box">系统运行<br>状态</div>
+              <!-- 修复后的SVG箭头 -->
+              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <defs>
+                  <marker id="arrowhead" markerWidth="0" markerHeight="0" 
+                          refX="3" refY="1" orient="auto" fill="#409EFF">
+                    <polygon points="0 0, 3 1, 0 2" />
+                  </marker>
+                </defs>
+                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
+                <path d="M 300 30 L 300 25 L 850 25 L 850 30" 
+                      stroke="#409EFF" stroke-width="2.5" 
+                      fill="none" marker-end="url(#arrowhead)" 
+                      stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <defs>
+                  <marker id="arrowhead1" markerWidth="2" markerHeight="4" 
+                          refX="1" refY="2" orient="auto" fill="#409EFF">
+                    <polygon points="0 0, 2 2, 0 4" />
+                  </marker>
+                </defs>
+                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
+                <path d="M 850 30 L 850 25 L 1130 25 L 1130 33" 
+                      stroke="#409EFF" stroke-width="2.5" 
+                      fill="none" marker-end="url(#arrowhead1)" 
+                      stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
               <div class="chart-wrapper">
                 <div class="chart-meta">
                   <h3>TPS 曲线</h3>
@@ -101,8 +128,9 @@
                 </div>
                 <div class="chart-item" id="growth-chart"></div>
               </div>
+              <div class="status-box right-status">两项指标均已通过<br>针对分布式系统的<br>安全评估方案验证</div>
             </div>
-            <div class="status-box right-status">两项指标均已通过<br>针对分布式系统的<br>安全评估方案验证</div>
+            
           </div>
         </div>
       </div>
