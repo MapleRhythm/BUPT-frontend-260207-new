@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function(){
         
         // 参照references样式的TPS图表
         const tpsXData = ["14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35"];
-        const tpsYData = [8450, 8520, 8480, 8600, 8550, 8620, 8700, 8650, 8720, 8800, 8750, 8820];
+        const tpsYData = [8250, 8520, 8480, 8600, 8950, 8620, 8700, 8250, 8720, 8800, 8750, 8420];
         
         // 计算TPS数据范围和上下限
-        const tpsMin = Math.min(...tpsYData);
-        const tpsMax = Math.max(...tpsYData);
+        const tpsMin = 0;
+        const tpsMax = Math.max(...tpsYData)+2000;
         const tpsRange = tpsMax - tpsMin;
         const tpsPadding = tpsRange * 0.1; // 0.1倍的数据范围作为padding，总范围为1.2倍
         const tpsYMin = tpsMin - tpsPadding;
@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function(){
           yAxis: {
             type: "value",
             name: "TPS",
-            min: Math.floor(tpsYMin),
-            max: Math.ceil(tpsYMax),
-            interval: 100,//function(max, min) { return Math.ceil((max - min) / 4); },
+            min: 0,
+            max: Math.ceil(tpsYMax)+2000,
+            interval: 2000,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', function(){
         const growthYData = [120, 125, 122, 130, 128, 120, 125, 124, 126, 127, 130, 120];
         
         // 计算链生长率数据范围和上下限
-        const growthMin = Math.min(...growthYData);
-        const growthMax = Math.max(...growthYData);
+        const growthMin = 0;
+        const growthMax = Math.max(...growthYData)+30;
         const growthRange = growthMax - growthMin;
         const growthPadding = growthRange * 0.1; // 0.1倍的数据范围作为padding，总范围为1.2倍
         const growthYMin = growthMin - growthPadding;
@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function(){
           yAxis: {
             type: "value",
             name: "block/s",
-            min: Math.floor(growthYMin),
-            max: Math.ceil(growthYMax),
-            interval: 3,//function(max, min) { return Math.ceil((max - min) / 4); },
+            min: 0,
+            max: Math.ceil(growthYMax)+30,
+            interval: 30,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
