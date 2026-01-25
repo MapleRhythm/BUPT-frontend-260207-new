@@ -101,7 +101,7 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   z-index: 99; /* 确保箭头在图表上方显示 */
   pointer-events: none; /* 避免箭头遮挡图表交互 */
 }
-.chart-wrapper{flex:1;height:150px;display:flex;flex-direction:column;gap:20px}
+.chart-wrapper{flex:1;height:150px;display:flex;flex-direction:column;gap:20px;padding:10px 0}
 .chart-meta{display:flex;justify-content:flex-start;align-items:center;}
 .chart-meta h3{margin:0;font-size:14px;font-weight:700;color:#C4CAF3;letter-spacing:0.2px;font-family:"Microsoft YaHei",sans-serif}
 .chart-item{flex:1;height:100%;border-radius:10px;background:rgba(17, 190, 245, 0.11);overflow:hidden;position:relative}
