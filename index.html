@@ -87,51 +87,61 @@
 
         <div class="board-bottom">
           <div class="bottom-content">
-            <div style="padding: 0 13px; background: transparent;"></div>
-            <div class="system-status-box">系统运行<br>状态</div>
+            <div style="padding: 0 20px; background: transparent;"></div>
+            <div class="system-status-box">系<br>统<br>运<br>行<br>状<br>态</div>
+            <!-- 修复后的SVG箭头 -->
+            <svg class="chart-connector" width="100%" height="20px" viewBox="0 0 1200 20" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrowhead" markerWidth="3" markerHeight="3" 
+                        refX="1" refY="1.5" orient="auto" fill="#409EFF">
+                  <polygon points="0 0, 3 1.5, 0 3" />
+                </marker>
+              </defs>
+              <!-- 调整坐标：连接两个chart的上方正中到右边文字框的上方正中 -->
+              <!-- 第一个箭头：从第一个chart到汇聚点 -->
+              <!-- 竖线（细线） -->
+              <path d="M 320 20 L 320 0" 
+                    stroke="#409EFF" stroke-width="2" 
+                    fill="none" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 横线（粗线） -->
+              <path d="M 322 0 L 830 0" 
+                    stroke="#409EFF" stroke-width="3" 
+                    fill="none" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 第二个箭头：从第二个chart到汇聚点 -->
+              <!-- 竖线（细线） -->
+              <path d="M 830 20 L 830 0" 
+                    stroke="#409EFF" stroke-width="2" 
+                    fill="none" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 横线（粗线） -->
+              <path d="M 830 0 L 830 0" 
+                    stroke="#409EFF" stroke-width="3" 
+                    fill="none" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 主箭头：从汇聚点到右边文字框 -->
+              <!-- 横线（粗线） -->
+              <path d="M 830 0 L 1128 0" 
+                    stroke="#409EFF" stroke-width="3" 
+                    fill="none" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 竖线（细线） -->
+              <path d="M 1130 0 L 1130 15" 
+                    stroke="#409EFF" stroke-width="2" 
+                    fill="none" marker-end="url(#arrowhead)" 
+                    stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
             <div class="chart-container">
-              <!-- 修复后的SVG箭头 -->
-              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
-                <defs>
-                  <marker id="arrowhead" markerWidth="0" markerHeight="0" 
-                          refX="3" refY="1" orient="auto" fill="#409EFF">
-                    <polygon points="0 0, 3 1, 0 2" />
-                  </marker>
-                </defs>
-                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
-                <path d="M 300 30 L 300 25 L 850 25 L 850 30" 
-                      stroke="#409EFF" stroke-width="2.5" 
-                      fill="none" marker-end="url(#arrowhead)" 
-                      stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
-              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
-                <defs>
-                  <marker id="arrowhead1" markerWidth="2" markerHeight="4" 
-                          refX="1" refY="2" orient="auto" fill="#409EFF">
-                    <polygon points="0 0, 2 2, 0 4" />
-                  </marker>
-                </defs>
-                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
-                <path d="M 850 30 L 850 25 L 1130 25 L 1130 33" 
-                      stroke="#409EFF" stroke-width="2.5" 
-                      fill="none" marker-end="url(#arrowhead1)" 
-                      stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
               <div class="chart-wrapper">
-                <div class="chart-meta">
-                  <h3>TPS 曲线</h3>
-                </div>
                 <div class="chart-item" id="tps-chart"></div>
               </div>
               <div class="chart-wrapper">
-                <div class="chart-meta">
-                  <h3>链生长率</h3>
-                </div>
                 <div class="chart-item" id="growth-chart"></div>
               </div>
             </div>
             <div class="status-box right-status">两项指标均已通过<br>针对分布式系统的<br>安全评估方案验证</div>
-            <div style="padding: 0 13px; background: transparent;"></div>
+            <div style="padding: 0 20px; background: transparent;"></div>
           </div>
         </div>
         

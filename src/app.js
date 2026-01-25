@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', function(){
         
         tpsChart.setOption({
           backgroundColor: 'transparent',
+          title: {
+            text: 'TPS曲线',
+            left: 'center',
+            top: '0%',
+            textStyle: {
+              color: '#C4CAF3',
+              fontSize: 14,
+              fontFamily: '"Microsoft YaHei", sans-serif'
+            }
+          },
           grid: { top: "20%", bottom: "20%", right: "5%", left: "8%" },
           tooltip: { 
             trigger: "axis",
@@ -78,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function(){
             name: "TPS",
             min: Math.floor(tpsYMin),
             max: Math.ceil(tpsYMax),
-            interval: 200,//function(max, min) { return Math.ceil((max - min) / 4); },
+            interval: 100,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
@@ -104,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         // 参照references样式的链生长率图表
         const growthXData = ["14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35"];
-        const growthYData = [120, 125, 122, 130, 128, 132, 135, 133, 138, 140, 139, 142];
+        const growthYData = [120, 125, 122, 130, 128, 120, 125, 124, 126, 127, 130, 120];
         
         // 计算链生长率数据范围和上下限
         const growthMin = Math.min(...growthYData);
@@ -116,6 +126,16 @@ document.addEventListener('DOMContentLoaded', function(){
         
         growthChart.setOption({
           backgroundColor: 'transparent',
+          title: {
+            text: '链生长率',
+            left: 'center',
+            top: '0%',
+            textStyle: {
+              color: '#C4CAF3',
+              fontSize: 14,
+              fontFamily: '"Microsoft YaHei", sans-serif'
+            }
+          },
           grid: { top: "20%", bottom: "20%", right: "5%", left: "8%" },
           tooltip: { 
             trigger: "axis",
@@ -141,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
             name: "block/s",
             min: Math.floor(growthYMin),
             max: Math.ceil(growthYMax),
-            interval: 10,//function(max, min) { return Math.ceil((max - min) / 4); },
+            interval: 3,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
