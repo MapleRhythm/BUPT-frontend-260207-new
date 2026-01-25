@@ -90,6 +90,33 @@
             <div style="padding: 0 13px; background: transparent;"></div>
             <div class="system-status-box">系统运行<br>状态</div>
             <div class="chart-container">
+              <!-- 修复后的SVG箭头 -->
+              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <defs>
+                  <marker id="arrowhead" markerWidth="0" markerHeight="0" 
+                          refX="3" refY="1" orient="auto" fill="#409EFF">
+                    <polygon points="0 0, 3 1, 0 2" />
+                  </marker>
+                </defs>
+                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
+                <path d="M 300 30 L 300 25 L 850 25 L 850 30" 
+                      stroke="#409EFF" stroke-width="2.5" 
+                      fill="none" marker-end="url(#arrowhead)" 
+                      stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <svg class="chart-connector" width="100%" height="100%" viewBox="0 0 1200 100" preserveAspectRatio="none">
+                <defs>
+                  <marker id="arrowhead1" markerWidth="2" markerHeight="4" 
+                          refX="1" refY="2" orient="auto" fill="#409EFF">
+                    <polygon points="0 0, 2 2, 0 4" />
+                  </marker>
+                </defs>
+                <!-- 调整坐标：适配chart-container的高度（100px左右） -->
+                <path d="M 850 30 L 850 25 L 1130 25 L 1130 33" 
+                      stroke="#409EFF" stroke-width="2.5" 
+                      fill="none" marker-end="url(#arrowhead1)" 
+                      stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
               <div class="chart-wrapper">
                 <div class="chart-meta">
                   <h3>TPS 曲线</h3>

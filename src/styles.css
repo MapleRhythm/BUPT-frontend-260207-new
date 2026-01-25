@@ -82,17 +82,41 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .mini-table{width:100%;color:#9ee9ff;border-collapse:collapse}
 .mini-table td{padding:6px 8px;border:1px solid rgba(0,140,210,0.04);font-size:12px}
 
-.board-bottom{height:120px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45);padding:10px}
+.board-bottom{height:200px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45);padding:10px}
 .bottom-content{display:flex;align-items:center;gap:10px;height:100%}
-.chart-container{display:flex;gap:10px;height:100%;flex:1}
-.chart-wrapper{flex:1;display:flex;flex-direction:column;gap:5px}
-.chart-meta{display:flex;justify-content:flex-start;align-items:baseline;padding-left:8px}
+.chart-container{
+  display:flex;
+  gap:15px; /* 适中的间距 */
+  height:100%;
+  flex:1;
+  position: relative;
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 两端对齐 */
+  padding: 0 10px; /* 左右留边，避免贴边 */
+}
+.chart-connector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99; /* 确保箭头在图表上方显示 */
+  pointer-events: none; /* 避免箭头遮挡图表交互 */
+}
+.chart-wrapper{flex:1;height:150px;display:flex;flex-direction:column;gap:20px}
+.chart-meta{display:flex;justify-content:flex-start;align-items:center;}
 .chart-meta h3{margin:0;font-size:14px;font-weight:700;color:#C4CAF3;letter-spacing:0.2px;font-family:"Microsoft YaHei",sans-serif}
 .chart-item{flex:1;height:100%;border-radius:10px;background:rgba(17, 190, 245, 0.11);overflow:hidden;position:relative}
-.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto}
-.status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:right;white-space:normal;flex:0 0 auto;z-index:10}
-
-/* 高亮荧光框（左/中/右/底） */
+.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto; /* 新增/修改：固定高度 + flex垂直居中 */
+  height: 60px; /* 自定义高度，比如80px/100px，根据需要调整 */
+  margin-top: 20px;
+  display: flex; /* 开启flex布局 */
+  align-items: center; /* 文字垂直居中 */
+  justify-content: center; /* 文字水平居中（保持原有center） */}
+.status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:right;white-space:normal;flex:0 0 auto;z-index:10; /* 新增/修改：固定高度 + flex垂直居中 */
+  height: 60px; /* 自定义高度，比如80px/100px，根据需要调整 */
+  margin-top: 20px;
+  display: flex; /* 开启flex布局 */
+  align-items: center; /* 文字垂直居中 */
+  justify-content: center; /* 文字水平居中（保持原有center） */}
 .board .hl-boxes{position:absolute;inset:48px 20px 60px 20px;pointer-events:none;z-index:3}
 .board .hl-box{position:absolute;border:2px solid rgba(6,212,255,0.9);border-radius:10px;box-shadow:0 0 40px rgba(6,212,255,0.14), inset 0 0 12px rgba(6,212,255,0.06);transition:transform .25s ease,box-shadow .25s ease;opacity:0.95}
 .board .hl-box.left{left:20px;top:72px;bottom:60px;width:calc(33.333% - 12px)}
