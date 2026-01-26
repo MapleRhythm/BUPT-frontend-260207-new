@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var tpsChart = echarts.init(document.getElementById('tps-chart'));
         
         // 参照references样式的TPS图表
-        const tpsXData = ["14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35"];
+        const tpsXData = ["0","1","2","3","4","5","6","7","8","9","10","11"];
         const tpsYData = [8250, 8520, 8480, 8600, 8950, 8620, 8700, 8250, 8720, 8800, 8750, 8420];
         
         // 计算TPS数据范围和上下限
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var growthChart = echarts.init(document.getElementById('growth-chart'));
         
         // 参照references样式的链生长率图表
-        const growthXData = ["14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35"];
+        const growthXData = ["0","1","2","3","4","5","6","7","8","9","10","11"];
         const growthYData = [120, 125, 122, 130, 128, 120, 125, 124, 126, 127, 130, 120];
         
         // 计算链生长率数据范围和上下限
