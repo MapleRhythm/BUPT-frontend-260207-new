@@ -40,12 +40,24 @@ document.addEventListener('DOMContentLoaded', function(){
         var tpsChart = echarts.init(document.getElementById('tps-chart'));
         
         // 参照references样式的TPS图表
-        const tpsXData = ["0","1","2","3","4","5","6","7","8","9","10","11"];
-        const tpsYData = [11250, 11520, 11480, 11600, 11950, 11620, 11700, 11250, 11720, 11800, 11750, 11420];
+        // 生成当前时间以及往前推11个10分钟的时间点
+        const generateTimeData = () => {
+          const times = [];
+          const now = new Date();
+          for (let i = 11; i >= 0; i--) {
+            const time = new Date(now.getTime() - i * 10 * 60 * 1000);
+            const hour = time.getHours().toString().padStart(2, '0');
+            const minute = time.getMinutes().toString().padStart(2, '0');
+            times.push(`${hour}:${minute}`);
+          }
+          return times;
+        };
+        const tpsXData = generateTimeData();
+        const tpsYData = [11550, 11620, 11580, 11600, 11750, 11620, 11700, 11450, 11600, 11700, 11750, 11620];
         
         // 计算TPS数据范围和上下限
-        const tpsMin = 0;
-        const tpsMax = Math.max(...tpsYData)+2000;
+        const tpsMin = 10000;
+        const tpsMax = 15000;
         const tpsRange = tpsMax - tpsMin;
         const tpsPadding = tpsRange * 0.1; // 0.1倍的数据范围作为padding，总范围为1.2倍
         const tpsYMin = tpsMin - tpsPadding;
@@ -59,9 +71,10 @@ document.addEventListener('DOMContentLoaded', function(){
             top: '0%',
             textStyle: {
               color: '#C4CAF3',
-              fontSize: 14,
+              fontSize: 18,
               fontFamily: '"Microsoft YaHei", sans-serif'
-            }
+            },
+            padding: [20, 0, 0, 0]
           },
           grid: { top: "20%", bottom: "20%", right: "5%", left: "8%" },
           tooltip: { 
@@ -74,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function(){
             type: "category",
             boundaryGap: false,
             data: tpsXData,
-            name: "时间",
-            nameLocation: "bottom",
-            nameTextStyle: { color: "#00FFF6", fontSize: 12 },
+            //name: "时间",
+            //nameLocation: "bottom",
+            //nameTextStyle: { color: "#00FFF6", fontSize: 12 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
             axisLine: { show: true, lineStyle: { color: "rgba(1, 202, 251, 0.4)", width: 1 } },
             splitLine: {
@@ -86,9 +99,9 @@ document.addEventListener('DOMContentLoaded', function(){
           yAxis: {
             type: "value",
             name: "TPS",
-            min: 0,
-            max: Math.ceil(tpsYMax)+2000,
-            interval: 2500,//function(max, min) { return Math.ceil((max - min) / 4); },
+            min: tpsMin,
+            max: tpsMax,
+            interval: 1000,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
@@ -113,12 +126,12 @@ document.addEventListener('DOMContentLoaded', function(){
         var growthChart = echarts.init(document.getElementById('growth-chart'));
         
         // 参照references样式的链生长率图表
-        const growthXData = ["0","1","2","3","4","5","6","7","8","9","10","11"];
-        const growthYData = [120, 125, 122, 130, 128, 120, 125, 124, 126, 127, 130, 120];
+        const growthXData = generateTimeData();
+        const growthYData = [123, 125, 122, 124, 126, 124, 125, 123, 121, 127, 130, 127];
         
         // 计算链生长率数据范围和上下限
-        const growthMin = 0;
-        const growthMax = Math.max(...growthYData)+30;
+        const growthMin = 100;
+        const growthMax = 150;
         const growthRange = growthMax - growthMin;
         const growthPadding = growthRange * 0.1; // 0.1倍的数据范围作为padding，总范围为1.2倍
         const growthYMin = growthMin - growthPadding;
@@ -132,9 +145,10 @@ document.addEventListener('DOMContentLoaded', function(){
             top: '0%',
             textStyle: {
               color: '#C4CAF3',
-              fontSize: 14,
+              fontSize: 18,
               fontFamily: '"Microsoft YaHei", sans-serif'
-            }
+            },
+            padding: [20, 0, 0, 0]
           },
           grid: { top: "20%", bottom: "20%", right: "5%", left: "8%" },
           tooltip: { 
@@ -147,9 +161,9 @@ document.addEventListener('DOMContentLoaded', function(){
             type: "category",
             boundaryGap: false,
             data: growthXData,
-            name: "时间",
-            nameLocation: "bottom",
-            nameTextStyle: { color: "#00FFF6", fontSize: 12 },
+            //name: "时间",
+            //nameLocation: "bottom",
+            //nameTextStyle: { color: "#00FFF6", fontSize: 12 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },
             axisLine: { show: true, lineStyle: { color: "rgba(1, 202, 251, 0.4)", width: 1 } },
             splitLine: {
@@ -159,9 +173,9 @@ document.addEventListener('DOMContentLoaded', function(){
           yAxis: {
             type: "value",
             name: "block/s",
-            min: 0,
-            max: Math.ceil(growthYMax)+30,
-            interval: 30,//function(max, min) { return Math.ceil((max - min) / 4); },
+            min: growthMin,
+            max: growthMax,
+            interval: 10,//function(max, min) { return Math.ceil((max - min) / 4); },
             nameLocation: "middle",
             nameTextStyle: { color: "#00FFF6", fontSize: 12, rotate: 0 },
             axisLabel: { color: "#C4CAF3", fontSize: 12 },

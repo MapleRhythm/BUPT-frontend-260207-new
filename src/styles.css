@@ -82,7 +82,7 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .mini-table{width:100%;color:#9ee9ff;border-collapse:collapse}
 .mini-table td{padding:6px 8px;border:1px solid rgba(0,140,210,0.04);font-size:12px}
 
-.board-bottom{height:200px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45);padding:10px}
+.board-bottom{height:400px;background-image:url('/assets/img/bg.9f67b30b.png');background-size:cover;background-position:center;margin-top:12px;border-radius:4px;box-shadow:inset 0 24px 48px rgba(0,0,0,0.45);padding:10px}
 .bottom-content{display:flex;align-items:center;gap:10px;height:100%;position:relative}
 .chart-container{
   display:flex;
@@ -101,23 +101,27 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   z-index: 99; /* 确保箭头在图表上方显示 */
   pointer-events: none; /* 避免箭头遮挡图表交互 */
 }
-.chart-wrapper{flex:1;height:150px;display:flex;flex-direction:column;gap:20px;padding:10px 0}
+.chart-wrapper{flex:1;height:350px;display:flex;flex-direction:column;gap:20px;padding:10px 0}
 .chart-meta{display:flex;justify-content:flex-start;align-items:center;}
 .chart-meta h3{margin:0;font-size:14px;font-weight:700;color:#C4CAF3;letter-spacing:0.2px;font-family:"Microsoft YaHei",sans-serif}
 .chart-item{flex:1;height:100%;border-radius:10px;background:rgba(17, 190, 245, 0.11);overflow:hidden;position:relative}
-.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto; /* 新增/修改：固定高度 + flex垂直居中 */
-  height: 117px; /* 自定义高度，比如80px/100px，根据需要调整 */
+.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:18px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto; /* 新增/修改：固定高度 + flex垂直居中 */
+  height: 300px; /* 自定义高度，比如80px/100px，根据需要调整 */
   margin-top: 10px;
   display: flex; /* 开启flex布局 */
   align-items: center; /* 文字垂直居中 */
   justify-content: center; /* 文字水平居中（保持原有center） */}
-.status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:14px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:right;white-space:normal;flex:0 0 auto;z-index:10; /* 新增/修改：固定高度 + flex垂直居中 */
-  height: 130px; /* 自定义高度，比如80px/100px，根据需要调整 */
+.status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:20px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;white-space:pre-wrap;word-wrap:break-word;flex:0 0 auto;z-index:10; /* 新增/修改：固定高度 + flex垂直居中 */
+  height: 300px; /* 保持300px高度 */
   margin-top: 0px;
   margin-bottom: 10px;
-  display: flex; /* 开启flex布局 */
-  align-items: center; /* 文字垂直居中 */
-  justify-content: center; /* 文字水平居中（保持原有center） */}
+  display: flex; /* 使用flex布局 */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  text-align: center; /* 文字居中对齐 */
+}
+.status-box .highlight{color:#00FFF6;font-weight:700;text-shadow:0 0 8px rgba(0, 255, 255, 0.8)}
+.status-box .status-text{display: inline-block; text-align: center;}
 .board .hl-boxes{position:absolute;inset:48px 20px 60px 20px;pointer-events:none;z-index:3}
 .board .hl-box{position:absolute;border:2px solid rgba(6,212,255,0.9);border-radius:10px;box-shadow:0 0 40px rgba(6,212,255,0.14), inset 0 0 12px rgba(6,212,255,0.06);transition:transform .25s ease,box-shadow .25s ease;opacity:0.95}
 .board .hl-box.left{left:20px;top:72px;bottom:60px;width:calc(33.333% - 12px)}
@@ -133,6 +137,7 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 /* Dialog 中图表颜色 */
 #chart{background:linear-gradient(180deg,#021f38,#02112b);}
 
+/* 小交互 */
 .el-button{border-radius:3px}
 .dialog-footer .el-button{background:transparent}
 
@@ -156,4 +161,16 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .col-right .inner-diagram {
   /* flex: 1 is already set in styles.css */
   overflow: hidden;
+}
+
+/* 悬浮文本的外层容器（仅负责定位） */
+.inner-diagram .diagram-text {
+  position: absolute;top: 28%;left: 2%;z-index: 99;
+}
+
+.inner-diagram .text-content {
+  color: #26ffbc; /* 文本颜色 */font-size: 10px;font-weight: 700;text-align: center;padding: 7.5px 20px;border-radius: 8px;
+}
+.inner-diagram .text-content2 {
+  color: #fe963d; /* 文本颜色 */font-size: 10px;font-weight: 700;text-align: center;padding: 7.5px 20px;border-radius: 8px;
 }
