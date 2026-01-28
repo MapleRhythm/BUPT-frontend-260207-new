@@ -18,13 +18,14 @@ body{
     repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px),
     url("/assets/img/full_background.png"); /* 背景图放在最后 → 最底层 */
   
-  /* 分别指定每个图层的 size（仅背景图用 cover，网格线用 auto） */
   background-size: auto, auto, cover; 
   
-  background-position: center, center, center;   /* 所有图层居中 */
-  background-repeat: repeat, repeat, no-repeat;  /* 网格线重复，背景图不重复 */
-  background-attachment: fixed;  /* 背景固定 */
-  background-blend-mode: overlay;/* 网格线与背景图叠加融合 */
+  background-size: auto, auto, cover; 
+  background-position: center, center, center; 
+  background-repeat: repeat, repeat, no-repeat; 
+  background-attachment: scroll; 
+  background-blend-mode: overlay;
+  min-height: 100vh;
 }
 /* 顶部大横幅 */
 .top-banner{display:none;}
