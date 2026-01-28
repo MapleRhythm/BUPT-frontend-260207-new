@@ -147,16 +147,19 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .chart-meta{display:flex;justify-content:flex-start;align-items:center;}
 .chart-meta h3{margin:0;font-size:14px;font-weight:700;color:#C4CAF3;letter-spacing:0.2px;font-family:"Microsoft YaHei",sans-serif}
 .chart-item{flex:1;height:100%;border-radius:10px;background:rgba(17, 190, 245, 0.11);overflow:hidden;position:relative}
-.system-status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:1px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:22px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto; /* 新增/修改：固定高度 + flex垂直居中 */
+.system-status-box{padding:15px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.3);box-shadow:0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:30px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;text-align:center;white-space:normal;flex:0 0 auto; /* 新增/修改：固定高度 + flex垂直居中 */
   height: 300px; /* 自定义高度，比如80px/100px，根据需要调整 */
   margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex; /* 开启flex布局 */
   align-items: center; /* 文字垂直居中 */
   justify-content: center; /* 文字水平居中（保持原有center） */}
 .status-box{padding:8px 12px;border-radius:6px;background:linear-gradient(135deg,rgba(17, 190, 245, 0.15),rgba(0, 100, 150, 0.25));border:2px solid rgba(0, 255, 255, 0.6);box-shadow:0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.05);font-size:30px;color:#C4CAF3;font-weight:500;text-shadow:0 0 5px rgba(0, 255, 255, 0.5);line-height:1.4;font-family:"Microsoft YaHei",sans-serif;white-space:pre-wrap;word-wrap:break-word;flex:0 0 auto;z-index:10; /* 新增/修改：固定高度 + flex垂直居中 */
   height: 300px; /* 保持300px高度 */
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
   display: flex; /* 使用flex布局 */
   align-items: center; /* 垂直居中 */
   justify-content: center; /* 水平居中 */
