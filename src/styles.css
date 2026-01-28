@@ -1,7 +1,32 @@
 /* 全局与背景 */
-html,body,#app{height:100%;margin:0;font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#00122b;color:#cfeeff}
-body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px);}
+/* 第一行：拆分 background，只保留需要的属性，移除背景色对 body 的覆盖 */
+html,body,#app{
+  height:100%;
+  margin:0;
+  font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  color:#cfeeff; /* 只保留文字颜色，删掉 background:#00122b */
+}
 
+/* 单独给 html 设置兜底背景色（避免背景图加载前空白） */
+html{
+  background-color: #00122b; /* 兜底色只给 html，不影响 body 的背景图 */
+}
+body{
+  /* 修正：图层顺序 → 网格线（上层）、背景图（底层） */
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px), 
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px),
+    url("/assets/img/full_background.png"); /* 背景图放在最后 → 最底层 */
+  
+  background-size: auto, auto, cover; 
+  
+  background-size: auto, auto, cover; 
+  background-position: center, center, center; 
+  background-repeat: repeat, repeat, no-repeat; 
+  background-attachment: scroll; 
+  background-blend-mode: overlay;
+  min-height: 100vh;
+}
 /* 顶部大横幅 */
 .top-banner{display:none;}
 .banner-inner{max-width:1200px;margin:0 auto}
@@ -76,7 +101,7 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 
 .col{flex:1;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(8,30,60,0.12),rgba(8,30,60,0.05));border:1px solid rgba(0,140,210,0.06);border-radius:8px;overflow:hidden;padding: 8px;min-height:260px}
 .col-header{
-  padding:20px;
+  padding:12px 10px;
   color:#e7fbff;
   font-weight:700;
   text-align:center;
@@ -85,10 +110,12 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   margin-bottom: 8px;
   font-size:32px;
 
-  background-image: url("/assets/img/mid_title_block.png");
-  background-size: 110% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #063a61;
+
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3),
+              inset 0 0 20px rgba(0, 255, 255, 0.05);
 
 }
 .col-inner{flex:0 0 auto;display:flex;align-items:stretch;justify-content:center;padding:10px;height:650px}
@@ -96,12 +123,22 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .col-inner .inner-box .inner-title{
   padding:10px 12px;
   font-size:28px;
-  color:#9fefff;
+  color:#83c9d6;
   font-weight:700;
   text-align:center;
   margin-top: 15px;
   margin-bottom:10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  
+  background-color: #1a3968;
 
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.15),
+              inset 0 0 20px rgba(0, 255, 255, 0.02);
 }
 
 .col-inner .inner-box .inner-diagram{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;height:100%;}
