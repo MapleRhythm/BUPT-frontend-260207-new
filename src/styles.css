@@ -18,9 +18,8 @@ body{
     repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px),
     url("/assets/img/full_background.png"); /* 背景图放在最后 → 最底层 */
   
-  background-size: auto, auto, cover; 
   
-  background-size: auto, auto, cover; 
+  background-size: 100% 104%;
   background-position: center, center, center; 
   background-repeat: repeat, repeat, no-repeat; 
   background-attachment: scroll; 
@@ -34,7 +33,13 @@ body{
 .banner-sub{color:rgba(200,240,255,0.8);margin-top:4px}
 
 /* 仪表盘容器 */
-.board-wrap{padding:26px 40px 40px}
+.board-wrap{
+  padding:26px 40px 40px;
+  width: 100%;          /* 基础宽度，小屏自动占满 */
+  max-width: 2200px;    /* 关键：仪表盘最大宽度（可自定义，推荐1200-1600px） */
+  margin: 0 auto;       /* 水平居中，让仪表盘在页面中间显示 */
+  box-sizing: border-box; /* 防止padding撑大宽度，布局更稳定 */
+}
 .board{max-width:1200px;margin:0 auto;border-radius:12px;padding:18px;background:linear-gradient(180deg,#02122a,#04183a);box-shadow:0 8px 30px rgba(0,0,0,0.6);border:1px solid rgba(10,150,255,0.06);position:relative;overflow:hidden}
 /* removed stacked thin gradient to avoid visual clutter */
 .board:before{display:none}
@@ -76,7 +81,7 @@ body{
 .chip{background:rgba(8,110,170,0.18);border-radius:14px;padding:6px 12px;color:#bfeeff;font-weight:700;border:1px solid rgba(0,200,255,0.12)}
 
 /* 三列布局 */
-.board-body{display:flex;gap:18px;margin-top:12px}
+.board-body{display:flex;gap:10px;margin-top:12px}
 
 /* 标题素材包裹层 */
 .title-wrap{max-width:1000px;margin:6px auto 18px;display:flex;align-items:center;justify-content:center;height:1.8em;font-size:40px;background-image:url('/assets/img/net-tt.31aae591.png');background-size:auto 1.8em;background-repeat:no-repeat;background-position:center;position:relative;z-index:2}
