@@ -204,11 +204,7 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
 .col-right .inner-diagram {
   /* flex: 1 is already set in styles.css */
   overflow: hidden;
-<<<<<<< Updated upstream
 }
-=======
-}
-
 /* 悬浮文本的外层容器（仅负责定位） */
 .inner-diagram .diagram-text {
   position: absolute;top: 28%;left: 2%;z-index: 99;
@@ -294,4 +290,3 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   opacity:0;
   transform:translateY(6px);
 }
->>>>>>> Stashed changes
