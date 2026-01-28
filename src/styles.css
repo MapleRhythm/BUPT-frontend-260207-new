@@ -162,7 +162,12 @@ body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1
   justify-content: center; /* 水平居中 */
   text-align: center; /* 文字居中对齐 */
 }
-.status-box .highlight{color:#FFFF00;font-weight:700;text-shadow:none}
+.status-box .highlight{
+  color:#2ddafd;
+  font-weight:700;
+  text-shadow:none
+}
+
 .status-box .status-text{display: inline-block; text-align: center;}
 .board .hl-boxes{position:absolute;inset:48px 20px 60px 20px;pointer-events:none;z-index:3}
 .board .hl-box{position:absolute;border:2px solid rgba(6,212,255,0.9);border-radius:10px;box-shadow:0 0 40px rgba(6,212,255,0.14), inset 0 0 12px rgba(6,212,255,0.06);transition:transform .25s ease,box-shadow .25s ease;opacity:0.95}
