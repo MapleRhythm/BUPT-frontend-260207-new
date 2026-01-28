@@ -1,7 +1,31 @@
 /* 全局与背景 */
-html,body,#app{height:100%;margin:0;font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:#00122b;color:#cfeeff}
-body{background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px);}
+/* 第一行：拆分 background，只保留需要的属性，移除背景色对 body 的覆盖 */
+html,body,#app{
+  height:100%;
+  margin:0;
+  font-family:Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  color:#cfeeff; /* 只保留文字颜色，删掉 background:#00122b */
+}
 
+/* 单独给 html 设置兜底背景色（避免背景图加载前空白） */
+html{
+  background-color: #00122b; /* 兜底色只给 html，不影响 body 的背景图 */
+}
+body{
+  /* 修正：图层顺序 → 网格线（上层）、背景图（底层） */
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px), 
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px),
+    url("/assets/img/full_background.png"); /* 背景图放在最后 → 最底层 */
+  
+  /* 分别指定每个图层的 size（仅背景图用 cover，网格线用 auto） */
+  background-size: auto, auto, cover; 
+  
+  background-position: center, center, center;   /* 所有图层居中 */
+  background-repeat: repeat, repeat, no-repeat;  /* 网格线重复，背景图不重复 */
+  background-attachment: fixed;  /* 背景固定 */
+  background-blend-mode: overlay;/* 网格线与背景图叠加融合 */
+}
 /* 顶部大横幅 */
 .top-banner{display:none;}
 .banner-inner{max-width:1200px;margin:0 auto}
