@@ -7,11 +7,24 @@ document.addEventListener('DOMContentLoaded', function(){
         dialogVisible: false,
         dialogTitle: '详情',
         chartShown: false,
-        headers:['无线网络分布式协同认证','无线网络数据可信交互','无线网络用户数据隐私保护']
+        headers:['无线网络分布式协同认证','无线网络数据可信交互','无线网络用户数据隐私保护'],
+        leftRecord: null,
+        leftRecordKey: '',
+        gifDurationMs: 11100,
+        gifIntervalId: null,
+        gifTickRunning: false,
+        centerRecord: null,
+        centerRecordKey: '',
+        centerGifDurationMs: 12020,
+        centerGifIntervalId: null,
+        centerGifTickRunning: false,
+        apiBase: 'http://localhost:3001'
       }
     },
     mounted(){
       this.initCharts();
+      this.startGifLoop();
+      this.startCenterGifLoop();
     },
     methods:{
       togglePreview(){ this.collapsed = !this.collapsed },
@@ -172,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function(){
           },
           yAxis: {
             type: "value",
-            name: "出块时间",
+            name: "出块时间 (ms)",
             min: growthMin,
             max: growthMax,
             interval: 10,//function(max, min) { return Math.ceil((max - min) / 4); },
@@ -201,6 +214,78 @@ document.addEventListener('DOMContentLoaded', function(){
           tpsChart.resize();
           growthChart.resize();
         });
+      },
+      startGifLoop(){
+        const img = document.getElementById('left-gif');
+        if (!img) return;
+        const baseSrc = img.getAttribute('src') || '';
+        const restart = async () => {
+          if (this.gifTickRunning) return;
+          this.gifTickRunning = true;
+          await this.fetchLeftData();
+          img.setAttribute('src', '');
+          img.setAttribute('src', baseSrc);
+          this.gifTickRunning = false;
+        };
+        this.fetchLeftData();
+        if (this.gifIntervalId) {
+          clearInterval(this.gifIntervalId);
+        }
+        this.gifIntervalId = setInterval(restart, this.gifDurationMs);
+      },
+      async fetchLeftData(){
+        try{
+          const resp = await fetch(`${this.apiBase}/api/left-data`, { cache: 'no-store' });
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const data = await resp.json();
+          const record = {
+            ue: data.ue || 'UEB',
+            timestamp: data.timestamp,
+            blockHeight: data.blockHeight,
+            status: data.status || '证书验证通过'
+          };
+          this.leftRecord = record;
+          this.leftRecordKey = `${record.timestamp}-${record.blockHeight}`;
+        }catch(err){
+          console.warn('[left-data] fetch failed', err);
+        }
+      },
+      startCenterGifLoop(){
+        const img = document.getElementById('center-gif');
+        if (!img) return;
+        const baseSrc = img.getAttribute('src') || '';
+        const restart = async () => {
+          if (this.centerGifTickRunning) return;
+          this.centerGifTickRunning = true;
+          await this.fetchCenterData();
+          img.setAttribute('src', '');
+          img.setAttribute('src', baseSrc);
+          this.centerGifTickRunning = false;
+        };
+        this.fetchCenterData();
+        if (this.centerGifIntervalId) {
+          clearInterval(this.centerGifIntervalId);
+        }
+        this.centerGifIntervalId = setInterval(restart, this.centerGifDurationMs);
+      },
+      async fetchCenterData(){
+        try{
+          const resp = await fetch(`${this.apiBase}/api/center-data`, { cache: 'no-store' });
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const data = await resp.json();
+          const record = {
+            ueId: data.ueId || '265',
+            targetId: data.targetId || '64f070:00000089',
+            reason: data.reason || '无线网络层',
+            status: data.status || '上下文释放',
+            blockHeight: data.blockHeight,
+            risk: data.risk || '否'
+          };
+          this.centerRecord = record;
+          this.centerRecordKey = `${record.blockHeight}-${record.ueId}`;
+        }catch(err){
+          console.warn('[center-data] fetch failed', err);
+        }
       }
     }
   })

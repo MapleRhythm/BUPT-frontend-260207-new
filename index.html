@@ -33,7 +33,23 @@
               <div class="inner-box">
                 <div class="inner-title">保障无线网络接入过程可信公开透明</div>
                 <div class="inner-diagram">
-                  <img src="/assets/img/p1-success-add-text.gif" alt="保障无线网络接入过程可信公开透明" loading="lazy">
+                  <img id="left-gif" src="/assets/img/p1-success-add-text.gif" alt="保障无线网络接入过程可信公开透明" loading="lazy">
+                </div>
+                <div class="left-data">
+                  <div class="left-row left-header">
+                    <span>认证UE</span>
+                    <span>时间戳</span>
+                    <span>区块高度</span>
+                    <span>详情</span>
+                  </div>
+                  <transition name="data-fade" mode="out-in">
+                    <div class="left-row left-item" v-if="leftRecord" :key="leftRecordKey">
+                      <span>{{ leftRecord.ue }}</span>
+                      <span>{{ leftRecord.timestamp }}</span>
+                      <span>{{ leftRecord.blockHeight }}</span>
+                      <span>{{ leftRecord.status }}</span>
+                    </div>
+                  </transition>
                 </div>
               </div>
             </div>
@@ -47,7 +63,27 @@
               <div class="inner-box">
                 <div class="inner-title">保障数据流转全流程安全可信</div>
                 <div class="inner-diagram">
-                  <img src="/assets/img/p2.gif" alt="保障数据流转全流程安全可信" loading="lazy">
+                  <img id="center-gif" src="/assets/img/p2.gif" alt="保障数据流转全流程安全可信" loading="lazy">
+                </div>
+                <div class="center-data">
+                  <div class="center-row center-header">
+                    <span>UE标识</span>
+                    <span>目标标识</span>
+                    <span>切换原因</span>
+                    <span>当前状态</span>
+                    <span>区块高度</span>
+                    <span>是否发生风险</span>
+                  </div>
+                  <transition name="data-fade" mode="out-in">
+                    <div class="center-row center-item" v-if="centerRecord" :key="centerRecordKey">
+                      <span>{{ centerRecord.ueId }}</span>
+                      <span>{{ centerRecord.targetId }}</span>
+                      <span>{{ centerRecord.reason }}</span>
+                      <span>{{ centerRecord.status }}</span>
+                      <span>{{ centerRecord.blockHeight }}</span>
+                      <span>{{ centerRecord.risk }}</span>
+                    </div>
+                  </transition>
                 </div>
               </div>
             </div>
