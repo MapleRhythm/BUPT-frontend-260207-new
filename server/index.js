@@ -2,7 +2,6 @@ const http = require('http');
 
 const PORT = process.env.PORT || 3001;
 let blockHeight = 630760;
-let centerBlockHeight = 630788;
 
 const sendJson = (res, status, data) => {
   res.writeHead(status, {
@@ -38,13 +37,13 @@ const server = http.createServer((req, res) => {
     return;
   }
   if (req.method === 'GET' && url.pathname === '/api/center-data') {
-    centerBlockHeight += 1;
+    blockHeight += 1;
     const payload = {
       ueId: '265',
       targetId: '64f070:00000089',
       reason: '无线网络层',
       status: '上下文释放',
-      blockHeight: centerBlockHeight,
+      blockHeight,
       risk: '否'
     };
     sendJson(res, 200, payload);
