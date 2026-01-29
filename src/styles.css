@@ -271,9 +271,9 @@ body{
 .left-data{
   margin-top:auto;
   width:100%;
-  color:#15ff7a;
+  color:#00eaff;
   font-size:13px;
-  font-weight:600;
+  font-weight:400;
   letter-spacing:0.2px;
   display:flex;
   flex-direction:column;
@@ -297,6 +297,7 @@ body{
 .left-item{
   background:rgba(5,40,80,0.4);
   border:1px solid rgba(0,200,255,0.08);
+  font-weight:400;
 }
 .left-item:nth-of-type(even){
   background:rgba(6,60,110,0.35);
@@ -304,9 +305,9 @@ body{
 .center-data{
   margin-top:auto;
   width:100%;
-  color:#15ff7a;
+  color:#00eaff;
   font-size:13px;
-  font-weight:600;
+  font-weight:400;
   letter-spacing:0.2px;
   display:flex;
   flex-direction:column;
@@ -330,6 +331,7 @@ body{
 .center-item{
   background:rgba(5,40,80,0.4);
   border:1px solid rgba(0,200,255,0.08);
+  font-weight:400;
 }
 .data-fade-enter-active,
 .data-fade-leave-active{
