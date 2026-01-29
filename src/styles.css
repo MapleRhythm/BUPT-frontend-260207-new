@@ -260,11 +260,11 @@ body {
   background-image: url('/assets/img/bg.9f67b30b.png');
   background-size: cover;
   background-position: center;
-  margin-top: 0.12rem;
   border-radius: 0.04rem;
   box-shadow: inset 0 0.24rem 0.48rem rgba(0,0,0,0.45);
   padding: 0.1rem;
   position: relative; /* 为SVG箭头定位做容器 */
+  margin-top: -0.08rem; /* 缩短与上面三列的间距 */
 }
 .bottom-content {
   display: flex;
