@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
         centerGifDurationMs: 12020,
         centerGifIntervalId: null,
         centerGifTickRunning: false,
-        apiBase: `${window.location.protocol}//${window.location.hostname}:3001`
+        apiBase: ''
       }
     },
     mounted(){
