@@ -256,7 +256,7 @@ body {
 
 /* 底部面板 - 图表区核心自适应 */
 .board-bottom {
-  height: 2.8rem;
+  height: 2.6rem;
   background-image: url('/assets/img/bg.9f67b30b.png');
   background-size: cover;
   background-position: center;
@@ -300,7 +300,7 @@ body {
 }
 .chart-wrapper {
   flex: 1 1 1.5rem; /* 图表最小宽度1.5rem，等比缩放 */
-  height: 2.7rem;
+  height: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -339,7 +339,7 @@ body {
   font-family: "Microsoft YaHei", sans-serif;
   text-align: center;
   flex: 0 0 auto;
-  height: 2.5rem;
+  height: 2.2rem;
   margin: 0.1rem;
   display: flex;
   align-items: center;
@@ -363,7 +363,7 @@ body {
   word-wrap: break-word;
   flex: 0 0 auto;
   z-index: 10;
-  height: 2.4rem;
+  height: 2.2rem;
   margin: 0.2rem 0 0.2rem 0;
   display: flex;
   align-items: center;
