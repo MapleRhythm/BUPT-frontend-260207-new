@@ -16,16 +16,16 @@ html, body, #app {
 
 body {
   /* 修正：图层顺序 → 网格线（上层）、背景图（底层） */
-  background-image: 
+  /* background-image: 
     repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 0.01rem, transparent 0.01rem 0.4rem), 
     repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 0.01rem, transparent 0.01rem 0.4rem),
-    url("/assets/img/full_background.png"); /* 背景图放在最后 → 最底层 */
-  background-size: 100% 104%;
+    url("/assets/img/full_background.png"); */
+  /* background-size: 100% 104%;
   background-position: center, center, center 10%; 
   background-repeat: repeat, repeat, no-repeat; 
   background-attachment: scroll; 
   background-blend-mode: overlay;
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 /* 顶部大横幅 */
@@ -122,31 +122,6 @@ body {
 
 /* 三列布局 - 弹性自适应，小屏自动换行 */
 .board-body { display: flex; gap: 0.1rem; margin-top: 0.12rem; flex-wrap: wrap; }
-.title-wrap {
-  max-width: 10rem;
-  margin: 0.06rem auto 0.18rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.8em;
-  font-size: 0.4rem;
-  background-image: url('/assets/img/net-tt.31aae591.png');
-  background-size: auto 1.8em;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  z-index: 2;
-}
-.title-wrap .title {
-  font-size: 0.35rem;
-  font-weight: 900;
-  letter-spacing: 0.02rem;
-  background: linear-gradient(180deg, #08c3d9 0%, #ffffff 50%, #ffffff 50%, #08c3d9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  padding: 0.25em 0.45em;
-}
 
 /* 列容器 - 核心自适应，小屏占满宽度 */
 .col {
